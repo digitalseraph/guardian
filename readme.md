@@ -2,6 +2,8 @@
 
 > This is a private composer repository for [White Sunrise, LLC](http://www.whitesunrise.com/) software and web development.
 
+> **This package is sti under open development and should not be used in production**
+
 This package allows a quick and tested way to setup a multi-auth user validation and authentication system, with
 custom middleware, guards, migrations, and seeders for testing. This package has only been tested in Laravel 5.3 and 5.4. 
 See below for installation instructions and other information.
