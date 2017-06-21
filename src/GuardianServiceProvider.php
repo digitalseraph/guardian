@@ -32,7 +32,7 @@ class GuardianServiceProvider extends ServiceProvider
         // require __DIR__ . '/routes.php';
 
         // Publish config files
-        $this->publishes([__DIR__ . '/config/config.php' => config_path('guardian.php')], 'config');
+        $this->publishes([__DIR__ . '/../config/config.php' => config_path('guardian.php')], 'config');
 
         // Register commands
         if ($this->app->runningInConsole()) {
@@ -55,7 +55,7 @@ class GuardianServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerGuardian();
-        $this->mergeConfigFrom(__DIR__ . '/config/config.php', 'guardian');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'guardian');
     }
 
     /**
