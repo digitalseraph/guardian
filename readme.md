@@ -27,7 +27,7 @@ git clone git@github.com:digitalseraph/guardian.git
     ],
     "psr-4": {
         "App\\": "app/",
-        "DigitalSeraph\\Guardian\\": "packages/digitalseraph/guardian/src/"
+        "DigitalSeraph\\Guardian\\": "packages/guardian/src/"
     }
 },
 ```
