@@ -1,19 +1,8 @@
 # Guardian - Multi-Auth with roles and permissions built right in
 
-> This is a private composer repository for [White Sunrise, LLC](http://www.whitesunrise.com/) software and web development.
+This package allows a quick and tested way to setup a multi-auth user validation and authentication system, with custom middleware, guards, migrations, and seeders for testing. This package has only been tested in Laravel 5.3 and 5.4.
 
-> **This package is sti under open development and should not be used in production**
-
-This package allows a quick and tested way to setup a multi-auth user validation and authentication system, with
-custom middleware, guards, migrations, and seeders for testing. This package has only been tested in Laravel 5.3 and 5.4. 
 See below for installation instructions and other information.
-
-#### About White Sunrise LLC 
-
-White Sunrise has been creating great websites and cloud-based software since 2008. We are known for innovative and 
-leading-edge development to create custom solutions for our clients
-
-Find out more about us [here](http://www.whitesunrise.com/why-us/about-us/). 
 
 ## Installation
 
@@ -26,7 +15,7 @@ This package can be easily installed as a private composer package. See below fo
 ```sh
 cd <project-root-directory>
 mkdir packages && cd packages
-git clone git@github.com:whitesunrise/guardian.git
+git clone git@github.com:digitalseraph/guardian.git
 ```
 
 2. Add the cloned repository to your project's composer.json file in the `autoload` section like so:
@@ -38,12 +27,12 @@ git clone git@github.com:whitesunrise/guardian.git
     ],
     "psr-4": {
         "App\\": "app/",
-        "WhiteSunrise\\Guardian\\": "packages/whitesunri/whitesunri/src/"
+        "DigitalSeraph\\Guardian\\": "packages/digitalseraph/guardian/src/"
     }
 },
 ```
 
-3. Clear composer and artisan autoload from your project root: 
+1. Clear composer and artisan autoload from your project root: 
 
 ```shell
 composer dumpautoload && php artisan clear-compiled
@@ -52,19 +41,19 @@ composer dumpautoload && php artisan clear-compiled
 4. Open your `config/app.php` and add the following to the `providers` array: 
 
 ```php
-WhiteSunrise\Guardian\GuardianServiceProvider::class,
+DigitalSeraph\Guardian\GuardianServiceProvider::class,
 ```
 
 5. In the same `config/app.php` and add the following to the `aliases` array: 
 
 ```php
-'Guardian' =>  WhiteSunrise\Guardian\Facades\GuardianFacade::class,
+'Guardian' =>  DigitalSeraph\Guardian\Facades\GuardianFacade::class,
 ```
 
 6. Publish the package configuration file to **config/guardian.php**:
 
 ```shell
-php artisan vendor:publish --provider="WhiteSunrise\Guardian\GuardianServiceProvider" --tag=config
+php artisan vendor:publish --provider="DigitalSeraph\Guardian\GuardianServiceProvider" --tag=config
 ```
 
 7. Open your `config/auth.php` and make the following 3 changes for the Admin User class:
@@ -122,11 +111,11 @@ php artisan vendor:publish --provider="WhiteSunrise\Guardian\GuardianServiceProv
         ```
 
 8. If you want to use Middleware (requires Laravel 5.1 or later. you also need to add the following to the `routeMiddleware` array in `app/Http/Kernel.php`:
-    
+
 ```php
-'role' => \WhiteSunrise\Guardian\Middleware\GuardianRole::class,
-'permission' => \WhiteSunrise\Guardian\Middleware\GuardianPermission::class,
-'ability' => \WhiteSunrise\Guardian\Middleware\GuardianAbility::class,
+'role' => \DigitalSeraph\Guardian\Middleware\GuardianRole::class,
+'permission' => \DigitalSeraph\Guardian\Middleware\GuardianPermission::class,
+'ability' => \DigitalSeraph\Guardian\Middleware\GuardianAbility::class,
 ```
 
 ### Configuration
@@ -142,7 +131,7 @@ Guardian uses the `app/Models` directory for storing models. **If you used [Lara
 1. Generate the Guardian migrations: 
 
 ```bash
-php artisan whitesunrise:guardian:make:migration all
+php artisan digitalseraph:guardian:make:migration all
 ```
 
 This will generate the `<timestamp>_guardian_create_roles_tables.php` and `<timestamp>_guardian_create_permissions_tables.php` migrations. Now you can run the migration(s.:
@@ -167,7 +156,7 @@ After the migration, five new tables will be present:
 Generate the new Role model inside `app/models/Role.php` by running:
 
 ```bash
-artisan whitesunrise:guardian:make:model role
+artisan digitalseraph:guardian:make:model role
 ```
 
 The `Role` model is used for both the `User` and `AdminUser` models. Both have pivot tables to keep user data separate. `Role` model has four main attributes:
@@ -184,7 +173,7 @@ Both `parent_id` and `description` are optional; their fields are nullable in th
 
 namespace App\Models;
 
-use WhiteSunrise\Guardian\Models\GuardianRole;
+use DigitalSeraph\Guardian\Models\GuardianRole;
 
 class Role extends GuardianRole
 {
@@ -196,10 +185,11 @@ class Role extends GuardianRole
 Generate the new Permission model inside `app/models/Permission.php` by running:
 
 ```bash
-artisan whitesunrise:guardian:make:model permission
+artisan digitalseraph:guardian:make:model permission
 ```
 
 The `Permission` model has three main attributes:
+
 - `name` - Unique human readable name for the permission. For example "Create Posts", "Edit Users", "Post Payments", "Subscribe to mailing list".
 - `slug` - Unique name for the permission, used for looking up permission information in the application layer. For example: "create-post", "edit-user", "post-payment", "mailing-list-subscribe".
 - `description` - A more detailed explanation of the Permission.
@@ -213,7 +203,7 @@ In general, it may be helpful to think of the last two attributes in the form of
 
 namespace App\Models;
 
-use WhiteSunrise\Guardian\Models\GuardianPermission;
+use DigitalSeraph\Guardian\Models\GuardianPermission;
 
 class Permission extends GuardianPermission
 {
@@ -233,7 +223,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
-use WhiteSunrise\Guardian\Traits\GuardianUserTrait;
+use DigitalSeraph\Guardian\Traits\GuardianUserTrait;
 
 class User extends Authenticatable
 {
@@ -245,6 +235,7 @@ class User extends Authenticatable
 ```
 
 This will enable the relation with `Role` and add the following methods to the `User` model:
+
 1. `roles()`
 2. `hasRole($roleSlug, $requireAll = false)` - accepts either a string or an array of roles to check
 3. `can($permissionSlug, $requireAll = false)` - accepts either a string or an array of permissions to check
@@ -252,7 +243,7 @@ This will enable the relation with `Role` and add the following methods to the `
 5. `attachRoles($role)`
 6. `detachRoles($role)`
 7. `withoutRoles($roles)` static method that returns the users WITHOUT the specified roles
-7. `withRoles($roles)` static method that returns the users WITH the specified roles
+8. `withRoles($roles)` static method that returns the users WITH the specified roles
 
 
 #### Admin User
@@ -267,7 +258,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
-use WhiteSunrise\Guardian\Traits\GuardianAdminUserTrait;
+use DigitalSeraph\Guardian\Traits\GuardianAdminUserTrait;
 
 class AdminUser extends Authenticatable
 {
@@ -287,7 +278,7 @@ This will enable the relation with `Role` and add the following methods to the `
 5. `attachRoles($role)`
 6. `detachRoles($role)`
 7. `withoutRoles($roles)` static method that returns the users WITHOUT the specified roles
-7. `withRoles($roles)` static method that returns the users WITH the specified roles
+8. `withRoles($roles)` static method that returns the users WITH the specified roles
 
 Don't forget to dump composer autoload:
 
@@ -297,54 +288,46 @@ composer dump-autoload
 
 ### Seeders
 
-1) Generate the seeder files: `artisan whitesunrise:guardian:make:seeder`
-2) Add the seeders to your DatabaseSeeder class:
+1. Generate the seeder files: `artisan digitalseraph:guardian:make:seeder`
+2. Add the seeders to your DatabaseSeeder class:
 
     ```php
     $this->call(GuardianRolesTableSeeder::class);
     ```
 
+3. Generate the seeder files: `artisan digitalseraph:guardian:make:seeder`
 
-8. Generate the seeder files: `artisan whitesunrise:guardian:make:seeder`
+4. Add the following to your DatabaseSeeder class: `$this->call(GuardianRolesTableSeeder::class);` or run `artisan db:seed --class=GuardianRolesTableSeeder`
 
-9. Add the following to your DatabaseSeeder class: `$this->call(GuardianRolesTableSeeder::class);` or run `artisan db:seed --class=GuardianRolesTableSeeder`
-
-10. Add the following to your DatabaseSeeder class: `$this->call(GuardianPermissionsTableSeeder::class);` or run `artisan db:seed --class=GuardianPermissionsTableSeeder`
-
-
+5. Add the following to your DatabaseSeeder class: `$this->call(GuardianPermissionsTableSeeder::class);` or run `artisan db:seed --class=GuardianPermissionsTableSeeder`
 
 ### Usage
 
 #### Concepts
 
-
-
-
-
-
 > You can generate any of the following models using the artisan commands: `User`, `AdminUser`, `Role`, and `Permission` 
 
-- Generate all the models: `artisan whitesunrise:guardian:make:model all`
-- Generate a specific model: `artisan whitesunrise:guardian:make:model <user|admin_user|role|permission>`
+- Generate all the models: `artisan digitalseraph:guardian:make:model all`
+- Generate a specific model: `artisan digitalseraph:guardian:make:model <user|admin_user|role|permission>`
 
 ---
 
-8. Generate the seeder files: `artisan whitesunrise:guardian:make:seeder`
-9. Add the following to your DatabaseSeeder class: `$this->call(GuardianRolesTableSeeder::class);` or run `artisan db:seed --class=GuardianRolesTableSeeder`
-10. Add the following to your DatabaseSeeder class: `$this->call(GuardianPermissionsTableSeeder::class);` or run `artisan db:seed --class=GuardianPermissionsTableSeeder `
-11. (Optionally) Add the Facade to your aliases in **config/app.php**:
+1. Generate the seeder files: `artisan digitalseraph:guardian:make:seeder`
+2. Add the following to your DatabaseSeeder class: `$this->call(GuardianRolesTableSeeder::class);` or run `artisan db:seed --class=GuardianRolesTableSeeder`
+3. Add the following to your DatabaseSeeder class: `$this->call(GuardianPermissionsTableSeeder::class);` or run `artisan db:seed --class=GuardianPermissionsTableSeeder `
+4. (Optionally) Add the Facade to your aliases in **config/app.php**:
 
     ```php
-    'Guardian' => WhiteSunrise\Guardian\Facades\GuardianFacade::class,
+    'Guardian' => DigitalSeraph\Guardian\Facades\GuardianFacade::class,
     ```
 
-12. (Optionally) Generate the models: `artisan whitesunrise:guardian:make:model`
-13. Use the GuardianUserTrait in your User model:
+5. (Optionally) Generate the models: `artisan digitalseraph:guardian:make:model`
+6. Use the GuardianUserTrait in your User model:
 
     ```php
     <?php
 
-    use WhiteSunrise\Guardian\Traits\GuardianUserTrait;
+    use DigitalSeraph\Guardian\Traits\GuardianUserTrait;
 
     class User extends Eloquent
     {

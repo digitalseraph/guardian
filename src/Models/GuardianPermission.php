@@ -1,19 +1,19 @@
 <?php
 
-namespace WhiteSunrise\Guardian\Models;
+namespace DigitalSeraph\Guardian\Models;
 
 /**
- * This file is part of WhiteSunrise Guardian,
+ * This file is part of DigitalSeraph Guardian,
  * a role & permission management solution for Laravel.
  *
  * @license MIT
- * @package WhiteSunrise\Guardian
+ * @package DigitalSeraph\Guardian
  */
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
-use WhiteSunrise\Guardian\Contracts\GuardianPermissionInterface;
-use WhiteSunrise\Guardian\Traits\GuardianPermissionTrait;
+use DigitalSeraph\Guardian\Contracts\GuardianPermissionInterface;
+use DigitalSeraph\Guardian\Traits\GuardianPermissionTrait;
 
 class GuardianPermission extends Model implements GuardianPermissionInterface
 {

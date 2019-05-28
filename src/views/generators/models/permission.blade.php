@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use WhiteSunrise\Guardian\Models\GuardianPermission;
+use DigitalSeraph\Guardian\Models\GuardianPermission;
 
 class Permission extends GuardianPermission
 {

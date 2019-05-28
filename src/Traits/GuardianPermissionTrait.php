@@ -1,13 +1,13 @@
 <?php
 
-namespace WhiteSunrise\Guardian\Traits;
+namespace DigitalSeraph\Guardian\Traits;
 
 /**
  * This file is part of White Sunrise Guardian,
  * a role & permission management solution for Laravel.
  *
  * @license MIT
- * @package WhiteSunrise\Guardian
+ * @package DigitalSeraph\Guardian
  */
 
 use Illuminate\Support\Facades\Config;

@@ -1,13 +1,13 @@
 <?php
 
-namespace WhiteSunrise\Guardian\Console\Commands;
+namespace DigitalSeraph\Guardian\Console\Commands;
 
 /**
- * This file is part of WhiteSunrise Guardian,
+ * This file is part of DigitalSeraph Guardian,
  * a role & permission management solution for Laravel.
  *
  * @license MIT
- * @package WhiteSunrise\Guardian
+ * @package DigitalSeraph\Guardian
  */
 
 use Illuminate\Console\Command;
@@ -20,7 +20,7 @@ class ModelCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'ws:guardian:make:model
+    protected $signature = 'ds:guardian:make:model
                             {model=all : Which model to generate, i.e. "role", or "permission"}';
 
     /**
@@ -28,7 +28,7 @@ class ModelCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Creates models following the WhiteSunrise Guardian specifications.';
+    protected $description = 'Creates models following the DigitalSeraph Guardian specifications.';
 
     /**
      * The types of models that are available for generation

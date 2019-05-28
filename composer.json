@@ -1,9 +1,9 @@
 {
-    "name": "whitesunrise/guardian",
+    "name": "digitalseraph/guardian",
     "type": "library",
     "description": "Multi- for Laravel 5.3+",
     "keywords": [
-        "WhiteSunrise",
+        "DigitalSeraph",
         "Guardian",
         "multi-auth",
         "eloquent",
@@ -15,10 +15,10 @@
     "authors": [
         {
             "name": "David Miller",
-            "email": "d.miller@whitesunrise.com"
+            "email": "d.miller@digitalseraph.com"
         }
     ],
-    "homepage": "https://github.com/whitesunrise/guardian",
+    "homepage": "https://github.com/digitalseraph/guardian",
     "require": {
         "illuminate/support": "~5.0",
         "illuminate/console": "~5.0",
@@ -34,12 +34,12 @@
             "database"
         ],
         "psr-4": {
-            "WhiteSunrise\\Guardian\\": "src/"
+            "DigitalSeraph\\Guardian\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "WhiteSunrise\\Guardian\\": "tests"
+            "DigitalSeraph\\Guardian\\": "tests"
         }
     },
     "minimum-stability": "dev",

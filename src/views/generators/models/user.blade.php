@@ -5,7 +5,7 @@ namespace App\Models\Users;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
-use WhiteSunrise\Guardian\Traits\GuardianUserTrait;
+use DigitalSeraph\Guardian\Traits\GuardianUserTrait;
 
 class User extends Authenticatable
 {

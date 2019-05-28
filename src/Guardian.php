@@ -1,13 +1,13 @@
 <?php
 
-namespace WhiteSunrise\Guardian;
+namespace DigitalSeraph\Guardian;
 
 /**
  * This class is the main entry point of Guardian. Usually the interaction
  * with this class will be done through the Guardian Facade
  *
  * @license MIT
- * @package WhiteSunrise\Guardian
+ * @package DigitalSeraph\Guardian
  */
 
 class Guardian

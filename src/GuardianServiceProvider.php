@@ -1,6 +1,6 @@
 <?php
 
-namespace WhiteSunrise\Guardian;
+namespace DigitalSeraph\Guardian;
 
 /**
  * This file is part of Entrust,
@@ -37,9 +37,9 @@ class GuardianServiceProvider extends ServiceProvider
         // Register commands
         if ($this->app->runningInConsole()) {
             $this->commands([
-                \WhiteSunrise\Guardian\Console\Commands\MigrationCommand::class,
-                \WhiteSunrise\Guardian\Console\Commands\SeederCommand::class,
-                \WhiteSunrise\Guardian\Console\Commands\ModelCommand::class,
+                \DigitalSeraph\Guardian\Console\Commands\MigrationCommand::class,
+                \DigitalSeraph\Guardian\Console\Commands\SeederCommand::class,
+                \DigitalSeraph\Guardian\Console\Commands\ModelCommand::class,
             ]);
         }
 
@@ -118,6 +118,6 @@ class GuardianServiceProvider extends ServiceProvider
         $this->app->bind('guardian', function ($app) {
             return new Guardian($app);
         });
-        $this->app->alias('guardian', 'WhiteSunrise\Guardian\Guardian');
+        $this->app->alias('guardian', 'DigitalSeraph\Guardian\Guardian');
     }
 }

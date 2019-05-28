@@ -1,13 +1,13 @@
 <?php
 
-namespace WhiteSunrise\Guardian\Console\Commands;
+namespace DigitalSeraph\Guardian\Console\Commands;
 
 /**
- * This file is part of WhiteSunrise Guardian,
+ * This file is part of DigitalSeraph Guardian,
  * a role & permission management solution for Laravel.
  *
  * @license MIT
- * @package WhiteSunrise\Guardian
+ * @package DigitalSeraph\Guardian
  */
 
 use Illuminate\Console\Command;
@@ -20,7 +20,7 @@ class MigrationCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'ws:guardian:make:migration 
+    protected $signature = 'ds:guardian:make:migration 
                             {migration=all : Which migrations to generate, i.e. "roles", or "permissions"}';
 
     /**
@@ -28,7 +28,7 @@ class MigrationCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Creates migration(s) following the WhiteSunrise Guardian specifications.';
+    protected $description = 'Creates migration(s) following the DigitalSeraph Guardian specifications.';
 
     /**
      * The types of migrations that are available for generation

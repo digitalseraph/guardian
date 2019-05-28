@@ -1,6 +1,6 @@
 <?php
 
-namespace WhiteSunrise\Guardian\Facades;
+namespace DigitalSeraph\Guardian\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace WhiteSunrise\Guardian\Notifications;
+namespace DigitalSeraph\Guardian\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;

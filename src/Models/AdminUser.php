@@ -1,11 +1,11 @@
 <?php
 
-namespace WhiteSunrise\Guardian\Models;
+namespace DigitalSeraph\Guardian\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use WhiteSunrise\Guardian\Notifications\ResetAdminPasswordNotification;
-use WhiteSunrise\Guardian\Traits\GuardianAdminUserTrait;
+use DigitalSeraph\Guardian\Notifications\ResetAdminPasswordNotification;
+use DigitalSeraph\Guardian\Traits\GuardianAdminUserTrait;
 
 class AdminUser extends Authenticatable
 {

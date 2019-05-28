@@ -1,13 +1,13 @@
 <?php
 
-namespace WhiteSunrise\Guardian\Contracts;
+namespace DigitalSeraph\Guardian\Contracts;
 
 /**
- * This file is part of WhiteSunrise Guardian,
+ * This file is part of DigitalSeraph Guardian,
  * a role & permission management solution for Laravel.
  *
  * @license MIT
- * @package WhiteSunrise\Guardian
+ * @package DigitalSeraph\Guardian
  */
 
 interface GuardianRoleInterface

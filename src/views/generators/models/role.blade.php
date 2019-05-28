@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use WhiteSunrise\Guardian\Models\GuardianRole;
+use DigitalSeraph\Guardian\Models\GuardianRole;
 
 class Role extends GuardianRole
 {
